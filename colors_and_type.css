@@ -1,0 +1,188 @@
+/* ============================================================
+   Lumière — Birthday Website Design System
+   Foundational tokens: color, type, spacing, motion
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Inter:wght@300;400;500;600&family=Caveat:wght@400;500;600&display=swap');
+
+:root {
+  /* --------- Palette: warm, low-saturation, candle-lit --------- */
+  --cream:       #FBF6EE;
+  --cream-deep:  #F3EBDD;
+  --blush:       #F3D9CE;
+  --rose-dust:   #D9A89A;
+  --taupe:       #7A5A4F;
+  --ink:         #2B1F1A;
+  --gold:        #B8893E;
+  --gold-soft:   #D4B179;
+  --champagne:   #E8D2A8;
+
+  --glass-fill:  rgba(251, 246, 238, 0.62);
+  --glass-edge:  rgba(255, 255, 255, 0.55);
+  --hairline:    rgba(43, 31, 26, 0.08);
+
+  /* --------- Foreground / background semantic --------- */
+  --bg:          var(--cream);
+  --bg-alt:      var(--cream-deep);
+  --fg-1:        var(--ink);
+  --fg-2:        var(--taupe);
+  --fg-3:        #A38A7E;
+  --accent:      var(--gold);
+  --accent-soft: var(--blush);
+
+  /* --------- Type families --------- */
+  --font-display: 'Cormorant Garamond', 'Cormorant', Georgia, serif;
+  --font-body:    'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-hand:    'Caveat', 'Bradley Hand', cursive;
+
+  /* --------- Type scale --------- */
+  --t-hero:    clamp(64px, 9vw, 144px);
+  --t-display: clamp(48px, 6vw, 96px);
+  --t-h1:      clamp(36px, 4vw, 64px);
+  --t-h2:      clamp(28px, 3vw, 44px);
+  --t-h3:      22px;
+  --t-lead:    20px;
+  --t-body:    17px;
+  --t-small:   14px;
+  --t-caption: 12px;
+
+  --leading-display: 1.05;
+  --leading-body:    1.6;
+  --leading-tight:   1.25;
+
+  --tracking-tight:  -0.02em;
+  --tracking-normal: 0;
+  --tracking-wide:   0.08em;
+  --tracking-caps:   0.16em;
+
+  /* --------- Spacing --------- */
+  --s-1: 4px;   --s-2: 8px;   --s-3: 16px;  --s-4: 24px;
+  --s-5: 32px;  --s-6: 48px;  --s-7: 64px;  --s-8: 96px;
+  --s-9: 128px; --s-10: 160px;
+  --gutter: clamp(48px, 8vw, 160px);
+
+  /* --------- Radii --------- */
+  --r-pill:  999px; --r-card: 20px; --r-modal: 28px;
+  --r-photo: 4px;   --r-input: 14px;
+
+  /* --------- Shadows --------- */
+  --shadow-soft:  0 8px 24px -12px rgba(122, 90, 79, 0.18);
+  --shadow-lift:  0 24px 60px -24px rgba(122, 90, 79, 0.28);
+  --shadow-glow:  0 0 48px -8px rgba(184, 137, 62, 0.25);
+  --shadow-photo: 0 12px 28px -16px rgba(43, 31, 26, 0.35);
+
+  /* --------- Motion --------- */
+  --ease:       cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-soft:  cubic-bezier(0.4, 0, 0.2, 1);
+  --d-fast:     250ms; --d-base: 600ms;
+  --d-slow:     900ms; --d-cinema: 1200ms;
+}
+
+html, body {
+  background: var(--bg);
+  color: var(--fg-1);
+  font-family: var(--font-body);
+  font-size: var(--t-body);
+  line-height: var(--leading-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+h1, .h1, h2, .h2, h3, .h3, .display, .hero {
+  font-family: var(--font-display);
+  font-weight: 400;
+  line-height: var(--leading-display);
+  letter-spacing: var(--tracking-tight);
+  color: var(--fg-1);
+  margin: 0;
+}
+
+.hero    { font-size: var(--t-hero); }
+.display { font-size: var(--t-display); }
+h1, .h1  { font-size: var(--t-h1); }
+h2, .h2  { font-size: var(--t-h2); line-height: var(--leading-tight); }
+h3, .h3  { font-size: var(--t-h3); line-height: var(--leading-tight); letter-spacing: 0; }
+
+.lead {
+  font-size: var(--t-lead);
+  color: var(--fg-2);
+  line-height: var(--leading-body);
+}
+
+p {
+  font-size: var(--t-body);
+  color: var(--fg-2);
+  margin: 0 0 var(--s-4);
+}
+
+.caption {
+  font-size: var(--t-caption);
+  letter-spacing: var(--tracking-caps);
+  text-transform: uppercase;
+  color: var(--fg-3);
+}
+
+.handwritten {
+  font-family: var(--font-hand);
+  font-weight: 500;
+  letter-spacing: 0;
+}
+
+a {
+  color: var(--fg-1);
+  text-decoration: none;
+  background-image: linear-gradient(var(--gold), var(--gold));
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  background-size: 0% 1px;
+  transition: background-size var(--d-fast) var(--ease), color var(--d-fast) var(--ease);
+}
+a:hover { color: var(--gold); background-size: 100% 1px; }
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-2);
+  padding: 14px 28px;
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: var(--fg-1);
+  background: var(--cream);
+  border: 1px solid var(--hairline);
+  border-radius: var(--r-pill);
+  cursor: pointer;
+  transition: opacity var(--d-fast) var(--ease),
+              box-shadow var(--d-fast) var(--ease),
+              transform var(--d-fast) var(--ease);
+}
+.btn:hover { opacity: 0.92; box-shadow: var(--shadow-glow); }
+.btn:active { transform: scale(0.985); }
+.btn-primary { background: var(--ink); color: var(--cream); border-color: transparent; }
+.btn-ghost   { background: transparent; border: 1px solid var(--hairline); }
+
+.glass {
+  background: var(--glass-fill);
+  backdrop-filter: blur(20px) saturate(120%);
+  -webkit-backdrop-filter: blur(20px) saturate(120%);
+  border: 1px solid var(--glass-edge);
+  border-radius: var(--r-pill);
+}
+
+.card {
+  background: var(--cream);
+  border-radius: var(--r-card);
+  box-shadow: var(--shadow-lift);
+  padding: var(--s-6);
+}
+
+.polaroid {
+  background: #FFFDF8;
+  padding: 14px 14px 56px;
+  border-radius: var(--r-photo);
+  box-shadow: var(--shadow-photo);
+  transition: transform var(--d-base) var(--ease);
+}
+.polaroid:hover { transform: translateY(-4px) rotate(1deg); }

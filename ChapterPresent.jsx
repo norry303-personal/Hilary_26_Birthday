@@ -280,16 +280,14 @@ function PresentChapter({ onNext }) {
 
   const tap = () => {
     if (opening) return;
-    const next = taps + 1;
-    setTaps(next);
+    if (window.startBgAudio) window.startBgAudio();
+    setTaps(1);
     setWiggleKey(k => k + 1);
-    if (next >= 2) {
-      setTimeout(() => {
-        setOpening(true);
-        setTimeout(() => setOpened(true), 1100);
-        setTimeout(() => onNext(), 2600);
-      }, 250);
-    }
+    setTimeout(() => {
+      setOpening(true);
+      setTimeout(() => setOpened(true), 1100);
+      setTimeout(() => onNext(), 2600);
+    }, 250);
   };
 
   const F = FINISHES[t.boxFinish] || FINISHES.rose;
@@ -349,7 +347,7 @@ function PresentChapter({ onNext }) {
         transition: 'opacity 700ms',
         animation: 'shimmer 2400ms ease-in-out infinite',
       }}>
-        {taps === 0 ? 'tap to begin' : 'once more —'}
+        {taps === 0 ? 'tap to begin' : 'opening —'}
       </div>
 
       <TweaksPanel>
@@ -389,3 +387,4 @@ function PresentChapter({ onNext }) {
 }
 
 window.PresentChapter = PresentChapter;
+

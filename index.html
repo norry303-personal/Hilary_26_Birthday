@@ -552,8 +552,28 @@ const VIDEO_ITEMS = [
   { file:'IMG_8747.MP4',  x:1028,y:618, w:108, h:156, rotate:2,    delay:2000, magnet:'gold'  },
 ];
 
-// All crop coords are in the original 6000×4000 image
-
+const VIDEO_POSTERS = {
+  '09525242-A7F6-4459-AA5D-7CC1D3FEE97C.MP4': 'Website Creation Photos/IMG_0801.JPG',
+  'IMG_1348.MP4': 'Website Creation Photos/IMG_1976.JPG',
+  'IMG_1515.MP4': 'Website Creation Photos/IMG_2820.JPG',
+  'IMG_1626.MP4': 'Website Creation Photos/IMG_3119.JPG',
+  'IMG_3044.MP4': 'Website Creation Photos/IMG_4246.JPG',
+  'IMG_3688.MP4': 'Website Creation Photos/IMG_5607.JPG',
+  'IMG_4289.MP4': 'Website Creation Photos/IMG_7504.JPEG',
+  'IMG_4290.MP4': 'Website Creation Photos/IMG_8345.JPEG',
+  'IMG_4696.MP4': 'Website Creation Photos/1st Reason/IMG_0179.JPEG',
+  'IMG_4975.MP4': 'Website Creation Photos/1st Reason/IMG_3243.JPG',
+  'IMG_5129.MP4': 'Website Creation Photos/2nd Reason/IMG_1029.JPEG',
+  'IMG_5138.MP4': 'Website Creation Photos/2nd Reason/IMG_6844.JPG',
+  'IMG_5436.MP4': 'Website Creation Photos/3rd Reason/IMG_2927.JPEG',
+  'IMG_5464.MP4': 'Website Creation Photos/4th Reason/IMG_0300.JPEG',
+  'IMG_5741.MP4': 'Website Creation Photos/4th Reason/IMG_2129.JPEG',
+  'IMG_6098.MP4': 'Website Creation Photos/5th Reason/IMG_1693.JPG',
+  'IMG_6858.MP4': 'Website Creation Photos/6th Reason/IMG_4935.JPEG',
+  'IMG_8058.MP4': 'Website Creation Photos/7th Reason/IMG_2673.JPG',
+  'IMG_8680.MP4': 'Website Creation Photos/8th Reason/IMG_4177.JPG',
+  'IMG_8747.MP4': 'Website Creation Photos/9th Reason/IMG_1286.JPEG',
+};
 
 const BOARD_MAGNETS = [
   { src:"Design Website Elements/Anacapri.png",  x:892,  y:52,  w:138, h:138, rotate:3,  delay:645,  magnet:"gold"  },
@@ -606,12 +626,13 @@ function BoardItem({ children, x, y, w, h, rotate=0, delay=0, zIndex=1, magnet='
 
 function VideoThumbnail({ file }) {
   const [hover,setHover]=useState(false);
+  const poster = VIDEO_POSTERS[file] || 'Design Website Elements/Magnet Board.jpg';
   return (
     <div onMouseEnter={()=>setHover(true)} onMouseLeave={()=>setHover(false)}
          style={{width:'100%',height:'100%',background:'#FFFDF8',padding:'8px 8px 26px',borderRadius:2,display:'flex',flexDirection:'column'}}>
       <div style={{position:'relative',flex:1,borderRadius:1,overflow:'hidden',background:'#1a1410'}}>
-        <video src={VIDEO_BASE+file} preload="metadata" muted playsInline
-               style={{width:'100%',height:'100%',objectFit:'cover',display:'block'}}/>
+        <img src={poster} alt="" aria-hidden="true"
+             style={{position:'absolute',inset:0,width:'100%',height:'100%',objectFit:'cover',display:'block'}}/>
         <div style={{position:'absolute',inset:0,display:'flex',alignItems:'center',justifyContent:'center',
           background:hover?'rgba(43,31,26,0.32)':'rgba(43,31,26,0.12)',transition:'background 300ms'}}>
           <div style={{width:hover?36:28,height:hover?36:28,borderRadius:'50%',
